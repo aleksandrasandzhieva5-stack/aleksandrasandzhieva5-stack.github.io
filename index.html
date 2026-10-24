@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#6366f1">
-<meta name="description" content="Корсик — персональный AI-ассистент для адаптации в Группе ПОЛИПЛАСТИК">
+<meta name="description" content="Корсик — AI-ассистент для адаптации в Группе ПОЛИПЛАСТИК">
 <title>Корсик · Адаптация</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/hr.css">
 </head>
@@ -24,9 +24,7 @@
     </div>
     <div class="header-top">
       <div class="logo">
-        <div class="logo-icon">
-          <div class="corsic-mini"></div>
-        </div>
+        <div class="logo-icon" id="headerMascot"></div>
         <div class="logo-text">
           <span>Корсик</span>
           <span class="logo-sub">AI-ассистент</span>
@@ -36,7 +34,7 @@
         <button class="icon-btn" id="themeToggle" aria-label="Сменить тему">
           <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <button class="icon-btn" id="hrAccessBtn" aria-label="Вход для HR" title="HR-панель">
+        <button class="icon-btn" id="hrAccessBtn" aria-label="HR-панель" title="HR-панель">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         </button>
       </div>
@@ -62,8 +60,8 @@
   <div class="tabs" role="tablist">
     <button class="tab active" data-tab="timeline" role="tab">🗓 Этапы</button>
     <button class="tab" data-tab="actions" role="tab">⚡ Действия</button>
-    <button class="tab" data-tab="resources" role="tab">📚 Ресурсы</button>
-    <button class="tab" data-tab="badges" role="tab"> Достижения</button>
+    <button class="tab" data-tab="resources" role="tab"> Ресурсы</button>
+    <button class="tab" data-tab="badges" role="tab">🏆 Достижения</button>
   </div>
 
   <section class="section active" id="timeline">
@@ -75,7 +73,7 @@
         <p id="currentStageDesc"></p>
         <button class="cta" id="currentStageCta">Открыть этап →</button>
       </div>
-      <div class="current-stage-corsic"></div>
+      <div class="current-stage-corsic" id="stageMascot"></div>
     </div>
     <div class="section-title">Все этапы</div>
     <div class="timeline" id="timelineList"></div>
@@ -100,7 +98,7 @@
         <div class="action-sub">Список для оформления</div>
       </button>
       <button class="action" data-action="map">
-        <div class="action-icon" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">🗺️</div>
+        <div class="action-icon" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">️</div>
         <div class="action-title">Карта офиса</div>
         <div class="action-sub">Схема и этажи</div>
       </button>
@@ -126,7 +124,7 @@
       <div><div class="resource-title">Справочник сотрудников</div><div class="resource-desc">8500 контактов · только из корп. сети</div></div>
     </div>
     <div class="resource" data-link="https://music.yandex.ru/artist/5631933?lang=en">
-      <div class="resource-icon">🎶</div>
+      <div class="resource-icon"></div>
       <div><div class="resource-title">Плейлист для концентрации</div><div class="resource-desc">Яндекс.Музыка</div></div>
     </div>
     <div class="resource" data-action="films">
@@ -134,11 +132,11 @@
       <div><div class="resource-title">Подборка фильмов</div><div class="resource-desc">5 фильмов о новой работе</div></div>
     </div>
     <div class="resource" data-action="books">
-      <div class="resource-icon"></div>
+      <div class="resource-icon">📖</div>
       <div><div class="resource-title">Книги для роста</div><div class="resource-desc">8 книг для карьеры</div></div>
     </div>
     <div class="resource" data-action="sport">
-      <div class="resource-icon">💪</div>
+      <div class="resource-icon"></div>
       <div><div class="resource-title">Спортивный комплекс</div><div class="resource-desc">Расписание и оснащение</div></div>
     </div>
     <div class="resource" data-action="transport">
@@ -151,8 +149,8 @@
     <div class="section-title">🏆 Ваши достижения</div>
     <div class="achievements" id="achievementsList"></div>
     <div class="section-title" style="margin-top:20px">💡 Совет дня</div>
-    <div class="tip-card" id="tipCard">
-      <div class="tip-icon">🐾</div>
+    <div class="tip-card">
+      <div class="tip-icon" id="tipMascot"></div>
       <div class="tip-content">
         <div class="tip-label">Корсик советует</div>
         <h3 id="tipTitle">Не бойся задавать вопросы</h3>
@@ -162,24 +160,24 @@
   </section>
 
   <button class="fab" id="chatFab" aria-label="Чат с Корсиком">
-    <div class="fab-corsic"></div>
+    <div class="fab-mascot" id="fabMascot"></div>
     <span class="badge-dot" id="chatBadge"></span>
   </button>
 
   <nav class="bottom-nav" role="navigation">
-    <button class="nav-item active" data-nav="timeline" aria-label="Этапы">
+    <button class="nav-item active" data-nav="timeline">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       <span>Этапы</span>
     </button>
-    <button class="nav-item" data-nav="actions" aria-label="Действия">
+    <button class="nav-item" data-nav="actions">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       <span>Действия</span>
     </button>
-    <button class="nav-item" data-nav="resources" aria-label="Ресурсы">
+    <button class="nav-item" data-nav="resources">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       <span>Ресурсы</span>
     </button>
-    <button class="nav-item" data-nav="badges" aria-label="Достижения">
+    <button class="nav-item" data-nav="badges">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
       <span>Достижения</span>
     </button>
@@ -191,7 +189,7 @@
   <div class="login-modal">
     <button class="modal-close" id="hrLoginClose">×</button>
     <div class="login-header">
-      <div class="login-corsic"></div>
+      <div class="login-corsic" id="loginMascot"></div>
       <h2>HR-панель Корсика</h2>
       <p>Доступ только для авторизованных HR-специалистов</p>
     </div>
@@ -214,9 +212,7 @@
 <div id="hr-app" class="hr-app hidden">
   <aside class="hr-sidebar">
     <div class="hr-logo">
-      <div class="hr-logo-icon">
-        <div class="corsic-mini"></div>
-      </div>
+      <div class="hr-logo-icon" id="hrLogoMascot"></div>
       <div>
         <div class="hr-logo-title">Корсик · HR</div>
         <div class="hr-logo-sub">Analytics Dashboard</div>
@@ -224,13 +220,13 @@
     </div>
     <nav class="hr-nav">
       <button class="hr-nav-item active" data-hr-tab="dashboard">
-        <span class="hr-nav-icon">📊</span><span>Дашборд</span>
+        <span class="hr-nav-icon"></span><span>Дашборд</span>
       </button>
       <button class="hr-nav-item" data-hr-tab="onboarding">
-        <span class="hr-nav-icon">👥</span><span>Онбординг</span>
+        <span class="hr-nav-icon"></span><span>Онбординг</span>
       </button>
       <button class="hr-nav-item" data-hr-tab="risk">
-        <span class="hr-nav-icon">⚠️</span><span>Зона риска</span>
+        <span class="hr-nav-icon">️</span><span>Зона риска</span>
         <span class="hr-badge" id="riskBadge">0</span>
       </button>
       <button class="hr-nav-item" data-hr-tab="knowledge">
@@ -240,7 +236,7 @@
         <span class="hr-nav-icon">💭</span><span>Sentiment</span>
       </button>
       <button class="hr-nav-item" data-hr-tab="settings">
-        <span class="hr-nav-icon">⚙️</span><span>Настройки</span>
+        <span class="hr-nav-icon">️</span><span>Настройки</span>
       </button>
     </nav>
     <div class="hr-sidebar-footer">
@@ -275,7 +271,6 @@
     </header>
 
     <div class="hr-content">
-      <!-- Dashboard -->
       <section class="hr-section active" id="hr-dashboard">
         <div class="kpi-grid">
           <div class="kpi-card">
@@ -313,14 +308,14 @@
         </div>
 
         <div class="dashboard-grid">
-          <div class="hr-card chart-card">
+          <div class="hr-card">
             <div class="hr-card-header">
               <h3>Воронка онбординга</h3>
               <span class="hr-card-sub">Распределение по этапам</span>
             </div>
             <div class="funnel-chart" id="funnelChart"></div>
           </div>
-          <div class="hr-card chart-card">
+          <div class="hr-card">
             <div class="hr-card-header">
               <h3>Настроение команды</h3>
               <span class="hr-card-sub">Sentiment за 30 дней</span>
@@ -338,7 +333,6 @@
         </div>
       </section>
 
-      <!-- Onboarding Pipeline -->
       <section class="hr-section" id="hr-onboarding">
         <div class="pipeline-filters">
           <div class="filter-group">
@@ -356,7 +350,6 @@
         <div class="pipeline-board" id="pipelineBoard"></div>
       </section>
 
-      <!-- Risk Digest -->
       <section class="hr-section" id="hr-risk">
         <div class="risk-summary">
           <div class="risk-stat">
@@ -376,7 +369,6 @@
             <div class="risk-stat-label">Мониторинг</div>
           </div>
         </div>
-
         <div class="risk-filters">
           <div class="filter-group">
             <button class="filter-chip active" data-risk="all">Все</button>
@@ -385,38 +377,25 @@
             <button class="filter-chip" data-risk="monitor">🔵 Мониторинг</button>
           </div>
         </div>
-
         <div class="risk-list" id="riskList"></div>
       </section>
 
-      <!-- Knowledge Base -->
       <section class="hr-section" id="hr-knowledge">
         <div class="kb-header">
           <div>
             <h3>База знаний бота</h3>
-            <p>Управляйте документами, которые использует Корсик для ответов</p>
+            <p>Управляйте документами, которые использует Корсик</p>
           </div>
           <button class="btn-primary" id="kbUploadBtn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Загрузить файл
           </button>
         </div>
-
         <div class="kb-stats">
-          <div class="kb-stat">
-            <div class="kb-stat-value" id="kbTotalFiles">0</div>
-            <div class="kb-stat-label">Файлов</div>
-          </div>
-          <div class="kb-stat">
-            <div class="kb-stat-value" id="kbTotalSize">0 МБ</div>
-            <div class="kb-stat-label">Общий размер</div>
-          </div>
-          <div class="kb-stat">
-            <div class="kb-stat-value" id="kbLastUpdate">—</div>
-            <div class="kb-stat-label">Последнее обновление</div>
-          </div>
+          <div class="kb-stat"><div class="kb-stat-value" id="kbTotalFiles">0</div><div class="kb-stat-label">Файлов</div></div>
+          <div class="kb-stat"><div class="kb-stat-value" id="kbTotalSize">0 МБ</div><div class="kb-stat-label">Общий размер</div></div>
+          <div class="kb-stat"><div class="kb-stat-value" id="kbLastUpdate">—</div><div class="kb-stat-label">Последнее обновление</div></div>
         </div>
-
         <div class="kb-categories">
           <button class="kb-cat active" data-cat="all">Все документы</button>
           <button class="kb-cat" data-cat="policy">Регламенты</button>
@@ -424,36 +403,22 @@
           <button class="kb-cat" data-cat="benefits">Соцпакет</button>
           <button class="kb-cat" data-cat="process">Процессы</button>
         </div>
-
         <div class="kb-list" id="kbList"></div>
       </section>
 
-      <!-- Sentiment -->
       <section class="hr-section" id="hr-sentiment">
         <div class="sentiment-overview">
           <div class="sentiment-gauge">
             <div class="gauge-value" id="gaugeValue">0</div>
             <div class="gauge-label">Общий индекс настроения</div>
-            <div class="gauge-bar">
-              <div class="gauge-fill" id="gaugeFill"></div>
-            </div>
+            <div class="gauge-bar"><div class="gauge-fill" id="gaugeFill"></div></div>
           </div>
           <div class="sentiment-metrics">
-            <div class="metric">
-              <div class="metric-value positive" id="metricPositive">0%</div>
-              <div class="metric-label">Позитив</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value neutral" id="metricNeutral">0%</div>
-              <div class="metric-label">Нейтрально</div>
-            </div>
-            <div class="metric">
-              <div class="metric-value negative" id="metricNegative">0%</div>
-              <div class="metric-label">Негатив</div>
-            </div>
+            <div class="metric"><div class="metric-value positive" id="metricPositive">0%</div><div class="metric-label">Позитив</div></div>
+            <div class="metric"><div class="metric-value neutral" id="metricNeutral">0%</div><div class="metric-label">Нейтрально</div></div>
+            <div class="metric"><div class="metric-value negative" id="metricNegative">0%</div><div class="metric-label">Негатив</div></div>
           </div>
         </div>
-
         <div class="hr-card">
           <div class="hr-card-header">
             <h3>Кластеры тем из опросов</h3>
@@ -463,103 +428,50 @@
         </div>
       </section>
 
-      <!-- Settings -->
       <section class="hr-section" id="hr-settings">
         <div class="settings-grid">
           <div class="hr-card">
             <h3>Настройки бота</h3>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Тон коммуникации</div>
-                <div class="setting-desc">Как Корсик обращается к сотрудникам</div>
-              </div>
-              <select class="setting-select">
-                <option>На ТЫ (дружелюбный)</option>
-                <option>На ВЫ (формальный)</option>
-                <option>Адаптивный</option>
-              </select>
+              <div><div class="setting-title">Тон коммуникации</div><div class="setting-desc">Как Корсик обращается к сотрудникам</div></div>
+              <select class="setting-select"><option>На ТЫ (дружелюбный)</option><option>На ВЫ (формальный)</option><option>Адаптивный</option></select>
             </div>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Частота напоминаний</div>
-                <div class="setting-desc">Как часто бот напоминает о непройденных опросах</div>
-              </div>
-              <select class="setting-select">
-                <option>Ежедневно</option>
-                <option>Раз в 2 дня</option>
-                <option>Раз в неделю</option>
-              </select>
+              <div><div class="setting-title">Частота напоминаний</div><div class="setting-desc">Как часто бот напоминает об опросах</div></div>
+              <select class="setting-select"><option>Ежедневно</option><option>Раз в 2 дня</option><option>Раз в неделю</option></select>
             </div>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Автосоздание задач</div>
-                <div class="setting-desc">Создавать задачи в HR-системе при негативных ответах</div>
-              </div>
-              <label class="toggle">
-                <input type="checkbox" checked>
-                <span class="toggle-slider"></span>
-              </label>
+              <div><div class="setting-title">Автосоздание задач</div><div class="setting-desc">Создавать задачи при негативных ответах</div></div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
             </div>
           </div>
-
           <div class="hr-card">
             <h3>Уведомления</h3>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Email-дайджест</div>
-                <div class="setting-desc">Еженедельная сводка по новичкам</div>
-              </div>
-              <label class="toggle">
-                <input type="checkbox" checked>
-                <span class="toggle-slider"></span>
-              </label>
+              <div><div class="setting-title">Email-дайджест</div><div class="setting-desc">Еженедельная сводка по новичкам</div></div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
             </div>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Push при критическом риске</div>
-                <div class="setting-desc">Мгновенное уведомление о сотрудниках в зоне увольнения</div>
-              </div>
-              <label class="toggle">
-                <input type="checkbox" checked>
-                <span class="toggle-slider"></span>
-              </label>
+              <div><div class="setting-title">Push при критическом риске</div><div class="setting-desc">Мгновенное уведомление</div></div>
+              <label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label>
             </div>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Telegram-бот HR</div>
-                <div class="setting-desc">Дублировать алерты в Telegram</div>
-              </div>
-              <label class="toggle">
-                <input type="checkbox">
-                <span class="toggle-slider"></span>
-              </label>
+              <div><div class="setting-title">Telegram-бот HR</div><div class="setting-desc">Дублировать алерты</div></div>
+              <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
             </div>
           </div>
-
           <div class="hr-card">
             <h3>Безопасность</h3>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Сменить код доступа</div>
-                <div class="setting-desc">Код для входа в HR-панель</div>
-              </div>
+              <div><div class="setting-title">Сменить код доступа</div><div class="setting-desc">Код для входа в HR-панель</div></div>
               <button class="btn-secondary">Изменить</button>
             </div>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Двухфакторная аутентификация</div>
-                <div class="setting-desc">Дополнительный код из Telegram</div>
-              </div>
-              <label class="toggle">
-                <input type="checkbox">
-                <span class="toggle-slider"></span>
-              </label>
+              <div><div class="setting-title">Двухфакторная аутентификация</div><div class="setting-desc">Дополнительный код из Telegram</div></div>
+              <label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label>
             </div>
             <div class="setting-row">
-              <div>
-                <div class="setting-title">Лог действий</div>
-                <div class="setting-desc">История изменений в базе знаний</div>
-              </div>
+              <div><div class="setting-title">Лог действий</div><div class="setting-desc">История изменений в базе знаний</div></div>
               <button class="btn-secondary">Просмотреть</button>
             </div>
           </div>
@@ -573,9 +485,7 @@
 <div class="modal-overlay" id="chatModal">
   <div class="chat-modal">
     <div class="chat-header">
-      <div class="chat-avatar">
-        <div class="corsic-mini"></div>
-      </div>
+      <div class="chat-avatar" id="chatMascot"></div>
       <div>
         <div class="chat-name">Корсик</div>
         <div class="chat-status">● Онлайн</div>
@@ -597,9 +507,9 @@
   <div class="upload-modal">
     <button class="modal-close" id="uploadClose">×</button>
     <h2>Загрузить файл в базу знаний</h2>
-    <p>Корсик будет использовать этот документ для ответов сотрудникам</p>
+    <p>Корсик будет использовать этот документ для ответов</p>
     <div class="upload-zone" id="uploadZone">
-      <div class="upload-icon"></div>
+      <div class="upload-icon">📄</div>
       <div class="upload-text">Перетащите файл сюда или нажмите для выбора</div>
       <div class="upload-hint">PDF, DOCX, TXT до 10 МБ</div>
       <input type="file" id="fileInput" accept=".pdf,.docx,.txt" hidden>
@@ -616,7 +526,7 @@
       </div>
       <div class="input-group">
         <label>Описание</label>
-        <input type="text" id="uploadDesc" placeholder="Краткое описание документа">
+        <input type="text" id="uploadDesc" placeholder="Краткое описание">
       </div>
     </div>
     <div class="upload-actions">
@@ -630,6 +540,7 @@
 
 <script src="js/data.js"></script>
 <script src="js/storage.js"></script>
+<script src="js/mascot.js"></script>
 <script src="js/chat.js"></script>
 <script src="js/app.js"></script>
 <script src="js/hr.js"></script>
