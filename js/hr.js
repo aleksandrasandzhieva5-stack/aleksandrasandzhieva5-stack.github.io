@@ -29,6 +29,7 @@ const HRModule = {
     if (code === HR_ACCESS_CODE) {
       this.isAuthenticated = true;
       this.closeLogin();
+      // КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ: полностью скрываем employee-app
       document.getElementById('employee-app').classList.add('hidden');
       document.getElementById('hr-app').classList.remove('hidden');
       this.renderAll();
@@ -41,9 +42,10 @@ const HRModule = {
   
   logout() {
     this.isAuthenticated = false;
+    // КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ: возвращаем employee-app
     document.getElementById('hr-app').classList.add('hidden');
     document.getElementById('employee-app').classList.remove('hidden');
-    EmployeeApp.showToast(' Вы вышли из HR-панели');
+    EmployeeApp.showToast('👋 Вы вышли из HR-панели');
   },
   
   bindLoginEvents() {
@@ -159,7 +161,7 @@ const HRModule = {
     const columns = [
       { id: 'early', title: '🌱 Первые дни', stages: [0, 1, 2, 3] },
       { id: 'active', title: '⚡ Активная адаптация', stages: [4, 5, 6, 7] },
-      { id: 'mid', title: ' Середина пути', stages: [8, 9] },
+      { id: 'mid', title: '🎯 Середина пути', stages: [8, 9] },
       { id: 'final', title: '🏁 Финишная прямая', stages: [10, 11, 12] },
     ];
     
@@ -295,7 +297,7 @@ const HRModule = {
   
   renderKbList(category = 'all') {
     const filtered = category === 'all' ? this.kbFiles : this.kbFiles.filter(f => f.category === category);
-    const icons = { policy: '📋', faq: '❓', benefits: '🎁', process: '⚙️' };
+    const icons = { policy: '📋', faq: '', benefits: '🎁', process: '⚙️' };
     
     document.getElementById('kbTotalFiles').textContent = this.kbFiles.length;
     document.getElementById('kbTotalSize').textContent = this.kbFiles.reduce((s, f) => s + parseFloat(f.size), 0).toFixed(1) + ' МБ';
@@ -311,7 +313,7 @@ const HRModule = {
             <span>·</span>
             <span>Обновлён: ${f.updated}</span>
             <span>·</span>
-            <span>📥 ${f.downloads}</span>
+            <span> ${f.downloads}</span>
           </div>
         </div>
         <div class="kb-item-actions">
@@ -348,7 +350,7 @@ const HRModule = {
   bindSettingsEvents() {
     document.querySelectorAll('.toggle input').forEach(toggle => {
       toggle.addEventListener('change', e => {
-        EmployeeApp.showToast(e.target.checked ? '✅ Включено' : '️ Отключено');
+        EmployeeApp.showToast(e.target.checked ? '✅ Включено' : '⚪ Отключено');
       });
     });
   },
