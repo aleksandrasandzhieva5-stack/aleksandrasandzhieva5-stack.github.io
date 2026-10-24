@@ -2,62 +2,40 @@ const ChatModule = {
   init() {
     this.messagesEl = document.getElementById('chatMessages');
     this.inputEl = document.getElementById('chatInput');
-    this.sendBtn = document.getElementById('chatSend');
     this.modal = document.getElementById('chatModal');
-    this.closeBtn = document.getElementById('chatClose');
-    this.fab = document.getElementById('chatFab');
     this.badge = document.getElementById('chatBadge');
-    this.bindEvents();
-    this.showGreetings();
-  },
-  bindEvents() {
-    this.fab.addEventListener('click', () => this.open());
-    this.closeBtn.addEventListener('click', () => this.close());
+    document.getElementById('chatFab').addEventListener('click', () => this.open());
+    document.getElementById('chatClose').addEventListener('click', () => this.close());
     this.modal.addEventListener('click', e => { if (e.target === this.modal) this.close(); });
-    this.sendBtn.addEventListener('click', () => this.sendMessage());
-    this.inputEl.addEventListener('keypress', e => { if (e.key === 'Enter') this.sendMessage(); });
+    document.getElementById('chatSend').addEventListener('click', () => this.sendMessage());
+    this.inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') this.sendMessage(); });
+    CHAT_BOT.greetings.forEach((g, i) => setTimeout(() => this.addMessage('bot', g), 300 + i * 600));
   },
-  open() {
-    this.modal.classList.add('open');
-    this.badge.style.display = 'none';
-    setTimeout(() => this.inputEl.focus(), 300);
-    CorsicMascot.triggerAnimation('chatMascot', 'happy');
-  },
+  open() { this.modal.classList.add('open'); this.badge.style.display = 'none'; setTimeout(() => this.inputEl.focus(), 300); },
   close() { this.modal.classList.remove('open'); },
-  showGreetings() {
-    setTimeout(() => this.addBotMessage(CHAT_BOT.greetings[0]), 300);
-    setTimeout(() => this.addBotMessage(CHAT_BOT.greetings[1]), 900);
-  },
-  addBotMessage(text) {
-    const div = document.createElement('div');
-    div.className = 'msg bot';
-    div.textContent = text;
-    this.messagesEl.appendChild(div);
-    this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
-  },
-  addUserMessage(text) {
-    const div = document.createElement('div');
-    div.className = 'msg user';
-    div.textContent = text;
-    this.messagesEl.appendChild(div);
+  addMessage(who, text) {
+    const d = document.createElement('div');
+    d.className = 'msg ' + who; d.textContent = text;
+    this.messagesEl.appendChild(d);
     this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
   },
   sendMessage() {
     const text = this.inputEl.value.trim();
     if (!text) return;
-    this.addUserMessage(text);
+    this.addMessage('user', text);
     this.inputEl.value = '';
     setTimeout(() => {
-      const lower = text.toLowerCase();
-      const found = CHAT_BOT.responses.find(r => r.keys.some(k => lower.includes(k)));
-      this.addBotMessage(found ? found.reply : CHAT_BOT.fallback);
-    }, 500 + Math.random() * 400);
+      const low = text.toLowerCase();
+      const found = CHAT_BOT.responses.find(r => r.keys.some(k => low.includes(k)));
+      if (found) return this.addMessage('bot', found.reply);
+      this.addMessage('bot', CHAT_BOT.fallback);
+      this.saveUnanswered(text);
+    }, 500);
   },
-  openWith(text) {
-    this.open();
-    setTimeout(() => {
-      this.addUserMessage(text);
-      setTimeout(() => this.addBotMessage('Понял! Передаю твой запрос HR-специалисту. Обычно отвечают в течение рабочего дня. 📨'), 600);
-    }, 300);
+  /* Нераспознанный вопрос попадает во вкладку HR «Вопросы бота» */
+  saveUnanswered(text) {
+    const list = Storage.get('botQuestions', []);
+    list.unshift({ id: 'u' + Date.now(), author: EmployeeApp.state.userName + ' Новичков', dept: 'Новый сотрудник', hrId: 1, date: new Date().toISOString().slice(0, 16), text, reason: 'Не распознан запрос' });
+    Storage.set('botQuestions', list);
   }
 };
