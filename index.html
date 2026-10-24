@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#6366f1">
-<meta name="description" content="Корсик — персональный гид по адаптации в Группе ПОЛИПЛАСТИК">
+<meta name="description" content="Корсик — персональный AI-ассистент для адаптации в Группе ПОЛИПЛАСТИК">
 <title>Корсик · Адаптация</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/hr.css">
 </head>
@@ -17,10 +17,20 @@
 <!-- ============ EMPLOYEE APP ============ -->
 <div id="employee-app" class="app">
   <header class="header">
+    <div class="header-bg">
+      <div class="header-orb orb-1"></div>
+      <div class="header-orb orb-2"></div>
+      <div class="header-orb orb-3"></div>
+    </div>
     <div class="header-top">
       <div class="logo">
-        <div class="logo-icon">🐾</div>
-        <span>Корсик</span>
+        <div class="logo-icon">
+          <div class="corsic-mini"></div>
+        </div>
+        <div class="logo-text">
+          <span>Корсик</span>
+          <span class="logo-sub">AI-ассистент</span>
+        </div>
       </div>
       <div class="header-actions">
         <button class="icon-btn" id="themeToggle" aria-label="Сменить тему">
@@ -33,7 +43,7 @@
     </div>
     <div class="greeting">
       <div class="hi">Добро пожаловать,</div>
-      <div class="name" id="userName">Александр </div>
+      <div class="name" id="userName">Александр 👋</div>
     </div>
   </header>
 
@@ -50,53 +60,57 @@
   </div>
 
   <div class="tabs" role="tablist">
-    <button class="tab active" data-tab="timeline" role="tab"> Этапы</button>
+    <button class="tab active" data-tab="timeline" role="tab">🗓 Этапы</button>
     <button class="tab" data-tab="actions" role="tab">⚡ Действия</button>
     <button class="tab" data-tab="resources" role="tab">📚 Ресурсы</button>
-    <button class="tab" data-tab="badges" role="tab">🏆 Достижения</button>
+    <button class="tab" data-tab="badges" role="tab"> Достижения</button>
   </div>
 
   <section class="section active" id="timeline">
     <div class="current-stage" id="currentStageCard">
-      <div class="label">Сейчас</div>
-      <h2 id="currentStageTitle">Загрузка...</h2>
-      <p id="currentStageDesc"></p>
-      <button class="cta" id="currentStageCta">Открыть этап →</button>
+      <div class="current-stage-bg"></div>
+      <div class="current-stage-content">
+        <div class="label">Сейчас</div>
+        <h2 id="currentStageTitle">Загрузка...</h2>
+        <p id="currentStageDesc"></p>
+        <button class="cta" id="currentStageCta">Открыть этап →</button>
+      </div>
+      <div class="current-stage-corsic"></div>
     </div>
     <div class="section-title">Все этапы</div>
     <div class="timeline" id="timelineList"></div>
   </section>
 
   <section class="section" id="actions">
-    <div class="section-title"> Быстрые действия</div>
+    <div class="section-title">⚡ Быстрые действия</div>
     <div class="actions-grid">
       <button class="action" data-action="hr">
-        <div class="action-icon" style="background:#eef2ff">💬</div>
+        <div class="action-icon" style="background:linear-gradient(135deg,#eef2ff,#e0e7ff)">💬</div>
         <div class="action-title">Связаться с HR</div>
         <div class="action-sub">Задать вопрос</div>
       </button>
       <button class="action" data-action="recruiter">
-        <div class="action-icon" style="background:#fef3c7"></div>
+        <div class="action-icon" style="background:linear-gradient(135deg,#fef3c7,#fde68a)">👤</div>
         <div class="action-title">Рекрутер</div>
         <div class="action-sub">Мацерова А.В.</div>
       </button>
       <button class="action" data-action="docs">
-        <div class="action-icon" style="background:#dcfce7">📄</div>
+        <div class="action-icon" style="background:linear-gradient(135deg,#dcfce7,#bbf7d0)">📄</div>
         <div class="action-title">Документы</div>
         <div class="action-sub">Список для оформления</div>
       </button>
       <button class="action" data-action="map">
-        <div class="action-icon" style="background:#fce7f3">🗺️</div>
+        <div class="action-icon" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">🗺️</div>
         <div class="action-title">Карта офиса</div>
         <div class="action-sub">Схема и этажи</div>
       </button>
       <button class="action" data-action="food">
-        <div class="action-icon" style="background:#ffedd5">🍽️</div>
+        <div class="action-icon" style="background:linear-gradient(135deg,#ffedd5,#fed7aa)">🍽️</div>
         <div class="action-title">Где пообедать</div>
         <div class="action-sub">Заведения рядом</div>
       </button>
       <button class="action" data-action="contacts">
-        <div class="action-icon" style="background:#e0e7ff">📇</div>
+        <div class="action-icon" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe)">📇</div>
         <div class="action-title">Справочник</div>
         <div class="action-sub">8500 контактов</div>
       </button>
@@ -106,7 +120,7 @@
   </section>
 
   <section class="section" id="resources">
-    <div class="section-title"> Полезные ресурсы</div>
+    <div class="section-title">📚 Полезные ресурсы</div>
     <div class="resource" data-link="https://my.polyplastic.ru/employees/Pages/address-book.aspx">
       <div class="resource-icon">📇</div>
       <div><div class="resource-title">Справочник сотрудников</div><div class="resource-desc">8500 контактов · только из корп. сети</div></div>
@@ -120,7 +134,7 @@
       <div><div class="resource-title">Подборка фильмов</div><div class="resource-desc">5 фильмов о новой работе</div></div>
     </div>
     <div class="resource" data-action="books">
-      <div class="resource-icon">📖</div>
+      <div class="resource-icon"></div>
       <div><div class="resource-title">Книги для роста</div><div class="resource-desc">8 книг для карьеры</div></div>
     </div>
     <div class="resource" data-action="sport">
@@ -136,16 +150,20 @@
   <section class="section" id="badges">
     <div class="section-title">🏆 Ваши достижения</div>
     <div class="achievements" id="achievementsList"></div>
-    <div class="section-title" style="margin-top:20px">Совет дня</div>
-    <div class="current-stage" style="background:linear-gradient(135deg,#10b981,#059669)">
-      <div class="label">Корсик советует</div>
-      <h2 id="tipTitle">Не бойся задавать вопросы</h2>
-      <p id="tipText">В первый месяц нормально не знать 80% процессов. Коллеги ценят любопытство больше, чем молчаливую неуверенность.</p>
+    <div class="section-title" style="margin-top:20px">💡 Совет дня</div>
+    <div class="tip-card" id="tipCard">
+      <div class="tip-icon">🐾</div>
+      <div class="tip-content">
+        <div class="tip-label">Корсик советует</div>
+        <h3 id="tipTitle">Не бойся задавать вопросы</h3>
+        <p id="tipText">В первый месяц нормально не знать 80% процессов. Коллеги ценят любопытство больше, чем молчаливую неуверенность.</p>
+      </div>
     </div>
   </section>
 
   <button class="fab" id="chatFab" aria-label="Чат с Корсиком">
-    🐾<span class="badge-dot" id="chatBadge"></span>
+    <div class="fab-corsic"></div>
+    <span class="badge-dot" id="chatBadge"></span>
   </button>
 
   <nav class="bottom-nav" role="navigation">
@@ -173,7 +191,7 @@
   <div class="login-modal">
     <button class="modal-close" id="hrLoginClose">×</button>
     <div class="login-header">
-      <div class="login-icon">🔐</div>
+      <div class="login-corsic"></div>
       <h2>HR-панель Корсика</h2>
       <p>Доступ только для авторизованных HR-специалистов</p>
     </div>
@@ -196,7 +214,9 @@
 <div id="hr-app" class="hr-app hidden">
   <aside class="hr-sidebar">
     <div class="hr-logo">
-      <div class="hr-logo-icon">🐾</div>
+      <div class="hr-logo-icon">
+        <div class="corsic-mini"></div>
+      </div>
       <div>
         <div class="hr-logo-title">Корсик · HR</div>
         <div class="hr-logo-sub">Analytics Dashboard</div>
@@ -210,7 +230,7 @@
         <span class="hr-nav-icon">👥</span><span>Онбординг</span>
       </button>
       <button class="hr-nav-item" data-hr-tab="risk">
-        <span class="hr-nav-icon">️</span><span>Зона риска</span>
+        <span class="hr-nav-icon">⚠️</span><span>Зона риска</span>
         <span class="hr-badge" id="riskBadge">0</span>
       </button>
       <button class="hr-nav-item" data-hr-tab="knowledge">
@@ -553,7 +573,9 @@
 <div class="modal-overlay" id="chatModal">
   <div class="chat-modal">
     <div class="chat-header">
-      <div class="chat-avatar">🐾</div>
+      <div class="chat-avatar">
+        <div class="corsic-mini"></div>
+      </div>
       <div>
         <div class="chat-name">Корсик</div>
         <div class="chat-status">● Онлайн</div>
@@ -577,7 +599,7 @@
     <h2>Загрузить файл в базу знаний</h2>
     <p>Корсик будет использовать этот документ для ответов сотрудникам</p>
     <div class="upload-zone" id="uploadZone">
-      <div class="upload-icon">📄</div>
+      <div class="upload-icon"></div>
       <div class="upload-text">Перетащите файл сюда или нажмите для выбора</div>
       <div class="upload-hint">PDF, DOCX, TXT до 10 МБ</div>
       <input type="file" id="fileInput" accept=".pdf,.docx,.txt" hidden>
