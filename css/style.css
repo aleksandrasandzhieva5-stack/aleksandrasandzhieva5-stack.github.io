@@ -405,3 +405,28 @@ mark{background:rgba(242,140,0,.3);color:inherit;border-radius:3px;padding:0 1px
   .risk-summary{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:600px){.kpi-grid,.risk-summary,.sentiment-metrics,.emp-grid{grid-template-columns:1fr}}
+
+/* ===== Stages / consent ===== */
+.stage.locked .stage-card{opacity:.6}
+.stage.skipped .stage-dot{background:var(--warning);border-color:var(--warning)}
+.stage.skipped .stage-dot svg{opacity:1}
+.stage-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.stage-meta .stage-badge{margin-top:0}
+.stage-badge.must{background:rgba(229,72,77,.12);color:var(--danger)}
+.st-head small{font-size:11px;color:var(--text-muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.st-head h2{margin:4px 0 6px}
+.st-desc{font-size:14px;margin:10px 0 14px}
+.task{display:flex;gap:12px;align-items:center;padding:12px;background:var(--surface-2);border-radius:12px;margin-bottom:8px;font-size:14px;cursor:pointer}
+.task input{width:20px;height:20px;accent-color:var(--primary);flex-shrink:0}
+.task.done span{text-decoration:line-through;color:var(--text-muted)}
+.task.disabled{opacity:.55;cursor:default}
+.st-progress{font-size:12px;color:var(--text-muted);margin:12px 0}
+.st-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.st-actions .btn-primary{flex:1;padding:13px}
+.st-note{margin-top:12px;padding:10px 12px;border-radius:10px;font-size:12px;background:rgba(var(--pr-rgb),.08);color:var(--text-muted)}
+.consent-box{background:var(--surface-2);border-radius:12px;padding:14px;font-size:12.5px;line-height:1.6;margin:14px 0}
+.consent-row{display:flex;gap:10px;align-items:flex-start;font-size:13px;margin-bottom:12px;cursor:pointer}
+.consent-row input{width:20px;height:20px;accent-color:var(--primary);flex-shrink:0;margin-top:1px}
+.consent-row a{color:var(--primary)}
+.login-btn:disabled{opacity:.5;cursor:not-allowed}
+.chat-note{padding:8px 16px;font-size:11px;color:var(--text-muted);background:var(--surface-2);border-top:1px solid var(--border)}
