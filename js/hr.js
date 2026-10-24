@@ -17,6 +17,7 @@ const HRModule = {
   },
 
   init() {
+    document.getElementById('auditBtn').addEventListener('click', () => { const l = Storage.get('auditLog', []); alert(l.length ? l.slice(0, 15).map(x => `${x.t} · ${x.who} · ${x.action}`).join('\n') : 'Журнал пуст'); });
     this.bindLogin(); this.bindNav(); this.bindFilters(); this.bindSearch(); this.bindKb(); this.bindLists();
     document.querySelectorAll('.toggle input').forEach(t => t.addEventListener('change', e => EmployeeApp.showToast(e.target.checked ? '✅ Включено' : '⚪ Отключено')));
     this.renderAll();
@@ -127,8 +128,14 @@ const HRModule = {
   },
 
   /* ---------- employee card ---------- */
+  audit(action) {
+    const log = Storage.get('auditLog', []);
+    log.unshift({ t: new Date().toLocaleString('ru-RU'), who: hrById(CURRENT_HR_ID).name, action });
+    Storage.set('auditLog', log.slice(0, 200));
+  },
   openEmployee(id) {
     const e = this.employees.find(x => x.id === id); if (!e) return;
+    this.audit('Просмотр карточки: ' + e.name);
     const hr = hrById(e.hrId), lvl = riskLevel(e);
     document.getElementById('searchResults').classList.remove('open');
     document.getElementById('empBody').innerHTML = `
@@ -249,6 +256,7 @@ const HRModule = {
     const answers = Storage.get('botAnswers', {});
     answers[id] = { text, by: me.name, date: new Date().toISOString().slice(0, 16), instead: q.hrId !== CURRENT_HR_ID };
     Storage.set('botAnswers', answers);
+    this.audit('Ответ на вопрос бота ' + id);
     this.renderQuestions();
     EmployeeApp.showToast('✅ Ответ отправлен сотруднику (демо)');
   },

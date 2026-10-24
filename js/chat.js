@@ -33,7 +33,9 @@ const ChatModule = {
     }, 500);
   },
   /* Нераспознанный вопрос попадает во вкладку HR «Вопросы бота» */
+  mask(t) { return t.replace(/\d{3}[-\s]?\d{3}[-\s]?\d{3}[-\s]?\d{2}|\d{4}[\s-]?\d{6}|\d{10,20}/g, '[скрыто]'); },
   saveUnanswered(text) {
+    text = this.mask(text);
     const list = Storage.get('botQuestions', []);
     list.unshift({ id: 'u' + Date.now(), author: EmployeeApp.state.userName + ' Новичков', dept: 'Новый сотрудник', hrId: 1, date: new Date().toISOString().slice(0, 16), text, reason: 'Не распознан запрос' });
     Storage.set('botQuestions', list);
