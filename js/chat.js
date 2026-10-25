@@ -1,4 +1,4 @@
-/* Адрес функции на Vercel/
+/* Адрес функции на Vercel */
 const CHAT_API_URL = 'https://aleksandrasandzhieva5-stackgithubio.vercel.app/api/reply';
 
 const ChatModule = {
