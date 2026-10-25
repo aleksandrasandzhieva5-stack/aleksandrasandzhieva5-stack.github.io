@@ -26,7 +26,7 @@ a{color:inherit}
 .muted{color:var(--text-muted);font-size:13px}
 
 /* ===== Employee app ===== */
-.app{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:90px;position:relative}
+.app{max-width:480px;margin:0 auto;min-height:100vh;padding-bottom:84px;position:relative}
 .header{background:var(--grad);padding:28px 20px 32px;color:#fff;border-radius:0 0 32px 32px;position:relative;overflow:hidden}
 .header-bg{position:absolute;inset:0;overflow:hidden}
 .header-orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.35}
@@ -54,11 +54,15 @@ a{color:inherit}
 .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--secondary));border-radius:10px;width:0;transition:width .8s}
 .progress-meta{display:flex;justify-content:space-between;margin-top:12px;font-size:12px;color:var(--text-muted);font-weight:500}
 
-.tabs{display:flex;gap:8px;padding:16px 16px 0;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{flex-shrink:0;padding:9px 16px;background:var(--surface);border:1px solid var(--border);border-radius:24px;font-size:13px;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all var(--transition)}
-.tab:hover{border-color:var(--primary-light);color:var(--primary)}
-.tab.active{background:var(--primary);color:#fff;border-color:var(--primary);box-shadow:0 4px 12px rgba(var(--pr-rgb),.3)}
+/* Единственная навигация: закреплена сверху, 4 равные кнопки, без горизонтальной прокрутки */
+.tabs-wrap{position:sticky;top:0;z-index:50;padding:16px 16px 8px;transition:box-shadow var(--transition)}
+.tabs-wrap.stuck{padding-top:12px;background:var(--bg);box-shadow:0 6px 12px -8px rgba(13,27,46,.25)}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px;background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0;padding:8px 2px;background:none;border:none;border-radius:14px;font:600 11px/1.2 var(--font);color:var(--text-muted);cursor:pointer;transition:all var(--transition)}
+.tab svg{width:20px;height:20px;flex-shrink:0}
+.tab:hover{color:var(--primary)}
+.tab:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.tab.active{background:var(--primary);color:#fff;box-shadow:0 4px 12px rgba(var(--pr-rgb),.3)}
 .section{padding:16px;display:none}
 .section.active{display:block;animation:fadeUp .4s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -115,11 +119,7 @@ a{color:inherit}
 .tip-content h3{font-size:17px;font-weight:800;margin-top:4px}
 .tip-content p{margin-top:8px;font-size:13px;opacity:.95}
 
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);padding:8px 16px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:space-around;z-index:100}
-.nav-item{flex:1;padding:8px 4px;background:none;border:none;color:var(--text-muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;font-weight:600}
-.nav-item svg{width:22px;height:22px}
-.nav-item.active{color:var(--primary)}
-.fab{position:fixed;bottom:90px;right:16px;width:58px;height:58px;background:var(--grad);border:none;border-radius:50%;color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(var(--pr-rgb),.45);display:grid;place-items:center;z-index:99;transition:transform var(--transition)}
+.fab{position:fixed;bottom:20px;right:16px;width:58px;height:58px;background:var(--grad);border:none;border-radius:50%;color:#fff;cursor:pointer;box-shadow:0 8px 24px rgba(var(--pr-rgb),.45);display:grid;place-items:center;z-index:99;transition:transform var(--transition)}
 .fab:hover{transform:scale(1.07)}
 .fab .badge-dot{position:absolute;top:2px;right:2px;width:13px;height:13px;background:var(--accent);border-radius:50%;border:2px solid var(--bg)}
 
@@ -191,7 +191,7 @@ a{color:inherit}
 @media(min-width:481px){
   body{background:#dde6f1}
   [data-theme="dark"] body{background:#050b16}
-  .app{margin:20px auto;min-height:calc(100vh - 40px);border-radius:28px;overflow:hidden;box-shadow:var(--shadow-xl);background:var(--bg)}
+  .app{margin:20px auto;min-height:calc(100vh - 40px);border-radius:28px;overflow:clip;box-shadow:var(--shadow-xl);background:var(--bg)}
 }
 
 /* ===== HR panel ===== */
