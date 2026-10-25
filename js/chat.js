@@ -1,5 +1,5 @@
-/* Адрес функции на Vercel: замените на свой после деплоя */
-const CHAT_API_URL = 'https://ВАШ-ПРОЕКТ.vercel.app/api/reply';
+/* Адрес функции на Vercel/
+const CHAT_API_URL = 'https://aleksandrasandzhieva5-stackgithubio.vercel.app/api/reply';
 
 const ChatModule = {
   history: [],      // {role, content} для GigaChat
