@@ -163,13 +163,21 @@ const EmployeeApp = {
     setTimeout(() => this.showToast('🏆 Достижение: ' + ACHIEVEMENTS.find(x => x.id === id).name), 1200);
   },
   switchSection(id) {
-    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x.dataset.tab === id));
-    document.querySelectorAll('.nav-item').forEach(x => x.classList.toggle('active', x.dataset.nav === id));
+    document.querySelectorAll('.tab').forEach(x => {
+      const on = x.dataset.tab === id;
+      x.classList.toggle('active', on); x.setAttribute('aria-selected', on);
+    });
     document.querySelectorAll('.section').forEach(x => x.classList.toggle('active', x.id === id));
+    // если пользователь прокрутил вниз, новый раздел показываем с начала (под закреплённой навигацией)
+    const bar = document.querySelector('.tabs-wrap'), sec = document.getElementById(id);
+    const top = sec.getBoundingClientRect().top + window.scrollY - bar.offsetHeight;
+    if (window.scrollY > top) window.scrollTo({ top: Math.max(0, top) });
   },
   bindEvents() {
+    const bar = document.querySelector('.tabs-wrap');
+    const onScroll = () => bar.classList.toggle('stuck', bar.getBoundingClientRect().top <= 0);
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
     document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => this.switchSection(t.dataset.tab)));
-    document.querySelectorAll('.nav-item').forEach(n => n.addEventListener('click', () => this.switchSection(n.dataset.nav)));
     document.getElementById('themeToggle').addEventListener('click', () => this.applyTheme(this.state.theme === 'light' ? 'dark' : 'light'));
     document.getElementById('hrAccessBtn').addEventListener('click', () => HRModule.openLogin());
     document.querySelectorAll('.action').forEach(a => a.addEventListener('click', () => this.handleAction(a.dataset.action)));
